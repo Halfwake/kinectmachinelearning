@@ -4,8 +4,9 @@ from pprint import pprint
 from sklearn import svm
 from sklearn import cross_validation
 
-json_data = open('data/classifiedSitting.csv').read()
-data = json.loads(json_data)
+with open('data/classifiedSitting.csv') as json_file:
+        data = json.loads(json_file.read())
+        
 # pprint(data[0])
 X = []
 y = []
