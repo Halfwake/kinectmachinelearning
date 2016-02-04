@@ -9,16 +9,16 @@ data = json.loads(json_data)
 # pprint(data[0])
 X = []
 y = []
-for i in range(len(data)):
-	yi = data[i]['label']
+for datum in data:
+	yi = datum['label']
 	if yi == 2:
 		continue
 	y.append(yi)
 	Xi = []
-	features = data[i]['jointPositions']['jointPositionDict']
+	features = datum['jointPositions']['jointPositionDict']
 	collection = ['HipCenter', 'HipLeft', 'HipRight', 'KneeRight', 'KneeLeft', 'WristRight', 'WristLeft', 'HandRight', 'HandLeft', 'ElbowRight', 'ElbowLeft']
-	for j in range(len(collection)):
-		xj = features[collection[j]].values()
+	for joint in collection:
+		xj = features[joint].values()
 		Xi = Xi + xj
 	X = X + [Xi]
 # train with svm
